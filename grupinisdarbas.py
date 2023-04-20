@@ -21,6 +21,8 @@
 # išlaidų įrašo sukūrimas ir įtraukimui į žurnalą
 # Programos meniu ir funkcionalumą galite įgyvendinti tiek per klasę, tiek pagrindinėje programoje.
 
+irasu_sarasas = []
+
 class Irasas():
     def __init__(self, suma, komentaras):
         self.suma = suma
@@ -44,8 +46,13 @@ class Pajamos(Irasas):
 class Biudzetas():
     def __init__(self, ataskaita, balansas, suma, komentaras):
         self.ataskaita = ataskaita
-        self.ataskaita = ataskaita
         self.balansas = balansas
         self.suma = suma
         self.komentaras = komentaras
+
+    def ataskaita(self):
+        for irasas in irasu_sarasas:
+            return Pajamos, Islaidos
+
+
 
