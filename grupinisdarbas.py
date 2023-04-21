@@ -52,28 +52,23 @@ class Biudzetas():
     def __init__(self):
         self.zurnalas = []
     
-    def pajamu_irasas(self,pajamos):
-        self.zurnalas.append(pajamos)
-
-    def islaidu_irasas(self,islaidos):
-        self.zurnalas.append(islaidos)
-
     def itraukti_irasa(self, irasas):
         self.zurnalas.append(irasas)
 
-biudzetas = Biudzetas()
-pajamos = Pajamos(500, 'pajamos', siuntejas='Tadas')
-biudzetas.pajamu_irasas(pajamos)
-islaidos = Islaidos(300, 'islaidos', gavejas='Jonas')
-biudzetas.islaidu_irasas(islaidos)
 
-for vartotojas in biudzetas.zurnalas:
-    if isinstance(vartotojas, Pajamos):
-        print(f'{vartotojas.siuntejas} pajamos yra: {vartotojas.suma}')
-    elif isinstance(vartotojas, Islaidos):
-        print(f'{vartotojas.gavejas}, islaidos yra: {vartotojas.suma}')
-    else:
-        print("Nėra jokių įrašų apie tokį vartotoją.")
+biudzetas = Biudzetas()
+# pajamos = Pajamos(500, 'pajamos', siuntejas='Tadas')
+# biudzetas.pajamu_irasas(pajamos)
+# islaidos = Islaidos(300, 'islaidos', gavejas='Jonas')
+# biudzetas.islaidu_irasas(islaidos)
+
+# for irasas in biudzetas.zurnalas:
+#     if isinstance(irasas, Pajamos):
+#         print(f'{irasas.siuntejas} pajamos yra: {irasas.suma}')
+#     elif isinstance(irasas, Islaidos):
+#         print(f'{irasas.gavejas}, islaidos yra: {irasas.suma}')
+#     else:
+#         print("Nėra jokių įrašų apie tokį vartotoją.")
 
 while True:
     print(' 1 - Peržiūrėti ataskaitą.\n '   
@@ -86,7 +81,10 @@ while True:
 
     if pasirinkimas == 1:
         clear()
-        biudzetas.itraukti_irasa(Pajamos(siuntejas='tadas', suma=200, komentaras='test'))
+        siuntejas = input('Iš kur gauti pinigai: ')
+        suma = input('Suma: ')
+        komentaras = input('Komentaras: ')
+        biudzetas.itraukti_irasa(Pajamos(siuntejas, suma, komentaras))
         print(Pajamos)
     elif pasirinkimas == 2:
         clear()
