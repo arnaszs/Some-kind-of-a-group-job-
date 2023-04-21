@@ -43,16 +43,16 @@ class Pajamos(Irasas):
         self.siuntejas = siuntejas
 
 class Biudzetas():
-    zurnalas = []
+    __zurnalas = []
     def asd(self):
-        print(self.zurnalas)
+        print(self.__zurnalas)
     
     def itraukti_irasa(self, irasas):
-        self.zurnalas.append(irasas)
+        self.__zurnalas.append(irasas)
 
     def ataskaita(self):
         clear()
-        for irasas in biudzetas.zurnalas:
+        for irasas in biudzetas.__zurnalas:
             if isinstance(irasas, Pajamos):
                 print(f'{irasas.siuntejas}: pajamos yra: {irasas.suma} € \n')
             elif isinstance(irasas, Islaidos):
@@ -64,7 +64,7 @@ class Biudzetas():
         clear()
         visos_pajamos = 0
         visos_islaidos = 0
-        for balansas in biudzetas.zurnalas:
+        for balansas in biudzetas.__zurnalas:
             if isinstance(balansas, Pajamos):
                 visos_pajamos += balansas.suma 
             elif isinstance(balansas, Islaidos):
