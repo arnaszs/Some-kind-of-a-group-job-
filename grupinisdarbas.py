@@ -49,25 +49,33 @@ class Pajamos(Irasas):
 
 
 class Biudzetas():
-    def __init__(self):
-        self.zurnalas = []
+    zurnalas = []
+    def asd(self):
+        print(self.zurnalas)
     
-    def pajamu_irasas(self, siuntejas, suma, komentaras):
-        self.zurnalas.append(pajamos)
+    def itraukti_irasa(self, irasas):
+        self.zurnalas.append(irasas)
 
-    def islaidu_irasas(self, gavejas, suma, komentaras):
-        self.zurnalas.append(islaidos)
+    def ataskaita(self):
+        for irasas in biudzetas.zurnalas:
+            if isinstance(irasas, Pajamos):
+                print(f'{irasas.siuntejas}: pajamos yra: {irasas.suma}')
+            elif isinstance(irasas, Islaidos):
+                print(f'{irasas.gavejas}: išlaidos yra: {irasas.suma}')
+            else:
+                print("Blogas įrašas")
 
+    def balansas(self):
+        visos_pajamos = 0
+        visos_islaidos = 0
+        for balansas in biudzetas.zurnalas:
+            if isinstance(balansas, Pajamos):
+                visos_pajamos += balansas.suma 
+            elif isinstance(balansas, Islaidos):
+                visos_islaidos += balansas.suma 
+        print(f"Balansas: {visos_pajamos - visos_islaidos}")
 
 biudzetas = Biudzetas()
-
-# for irasas in biudzetas.zurnalas:
-#     if isinstance(irasas, Pajamos):
-#         print(f'{irasas.siuntejas} pajamos yra: {irasas.suma}')
-#     elif isinstance(irasas, Islaidos):
-#         print(f'{irasas.gavejas}, islaidos yra: {irasas.suma}')
-#     else:
-#         print("Nėra jokių įrašų apie tokį vartotoją.")
 
 while True:
     print(' 1 - Peržiūrėti ataskaitą.\n '   
@@ -79,23 +87,26 @@ while True:
     
 
     if pasirinkimas == 1:
-        
+        clear()
+        biudzetas.ataskaita()
     elif pasirinkimas == 2:
         clear()
-        print("2 pasirinkimas")
+        biudzetas.balansas()
     elif pasirinkimas == 3:
         clear()
         pajamos = float(input("Įveskite savo pajamas: "))
         komentaras = input('Įveskite komentarą: ')
         siuntejas = input("Įveskite siuntėją: ")
-        biudzetas.pajamu_irasas(pajamos, komentaras, siuntejas)
+        biudzetas.itraukti_irasa(Pajamos(siuntejas, pajamos, komentaras))
+        clear()
         print('Sukurtas pajamų įrašas')
     elif pasirinkimas == 4:
         clear()
         islaidos = float(input("Iveskite savo išlaidos: "))
         komentaras = input('Įveskite komentarą: ')
         gavejas = input("Įveskite siuntėją: ")
-        biudzetas.pajamu_irasas(islaidos, komentaras, gavejas)
+        biudzetas.itraukti_irasa(Islaidos(gavejas, islaidos, komentaras))
+        clear()
         print('Sukurtas išlaidų įrašas')
     elif pasirinkimas == 0:
         clear()
