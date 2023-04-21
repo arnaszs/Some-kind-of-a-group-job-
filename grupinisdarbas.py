@@ -1,25 +1,3 @@
-# Komandinis darbas - biudžeto programėlė
-# Klasės
-# Irasas (abstraktus) +
-
-# savybė suma +
-# savybė komentaras +
-# Islaidos(Irasas) +
-
-# savybė gavejas +
-# Pajamos(Irasas) +
-
-# savybė siuntejas +
-# Biudzetas
-
-# savybe zurnalas: sąrašas įrašų
-# Biudzetas turi turėti metodus:
-
-# ataskaitai
-# balansas
-# pajamų įrašo sukūrimas ir įtraukimui į žurnalą
-# išlaidų įrašo sukūrimas ir įtraukimui į žurnalą
-# Programos meniu ir funkcionalumą galite įgyvendinti tiek per klasę, tiek pagrindinėje programoje.
 import os
 
 def clear():
@@ -83,15 +61,17 @@ while True:
     '3 - Sukurti pajamų įrašą. \n '
     '4 - Sukurti išlaidų įrašą. \n '
     '0 - Išeiti iš meniu. \n ')
-    pasirinkimas = int(input('Pasirinkite ką norite atlikti: '))
+    pasirinkimas = int(input('Pasirinkite, ką norite atlikti: '))
     
 
     if pasirinkimas == 1:
         clear()
         biudzetas.ataskaita()
+        print('\n')
     elif pasirinkimas == 2:
         clear()
         biudzetas.balansas()
+        print('\n')
     elif pasirinkimas == 3:
         clear()
         pajamos = float(input("Įveskite savo pajamas: "))
@@ -99,15 +79,15 @@ while True:
         siuntejas = input("Įveskite siuntėją: ")
         biudzetas.itraukti_irasa(Pajamos(siuntejas, pajamos, komentaras))
         clear()
-        print('Sukurtas pajamų įrašas')
+        print('Sukurtas naujas pajamų įrašas. \n')
     elif pasirinkimas == 4:
         clear()
-        islaidos = float(input("Iveskite savo išlaidos: "))
+        islaidos = float(input("Įveskite savo išlaidas: "))
         komentaras = input('Įveskite komentarą: ')
         gavejas = input("Įveskite siuntėją: ")
         biudzetas.itraukti_irasa(Islaidos(gavejas, islaidos, komentaras))
         clear()
-        print('Sukurtas išlaidų įrašas')
+        print('Sukurtas naujas išlaidų įrašas. \n')
     elif pasirinkimas == 0:
         clear()
         break
