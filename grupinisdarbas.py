@@ -6,6 +6,24 @@ def clear():
     else:
         os.system('clear')
 
+def pajamu_menu():
+    clear()
+    pajamos = float(input("Įveskite savo pajamas: "))
+    komentaras = input('Įveskite komentarą: ')
+    siuntejas = input("Įveskite siuntėją: ")
+    biudzetas.itraukti_irasa(Pajamos(siuntejas, pajamos, komentaras))
+    clear()
+    print('Sukurtas naujas pajamų įrašas. \n')
+    
+def islaidu_menu():
+    clear()
+    islaidos = float(input("Įveskite savo išlaidas: "))
+    komentaras = input('Įveskite komentarą: ')
+    gavejas = input("Įveskite siuntėją: ")
+    biudzetas.itraukti_irasa(Islaidos(gavejas, islaidos, komentaras))
+    clear()
+    print('Sukurtas naujas išlaidų įrašas. \n')
+    
 clear()
 
 class Irasas():
@@ -19,12 +37,10 @@ class Islaidos(Irasas):
         super().__init__(suma, komentaras)
         self.gavejas = gavejas
 
-
 class Pajamos(Irasas):
     def __init__(self, siuntejas, suma, komentaras):
         super().__init__(suma, komentaras)
         self.siuntejas = siuntejas
-
 
 class Biudzetas():
     zurnalas = []
@@ -35,15 +51,17 @@ class Biudzetas():
         self.zurnalas.append(irasas)
 
     def ataskaita(self):
+        clear()
         for irasas in biudzetas.zurnalas:
             if isinstance(irasas, Pajamos):
-                print(f'{irasas.siuntejas}: pajamos yra: {irasas.suma}')
+                print(f'{irasas.siuntejas}: pajamos yra: {irasas.suma} € \n')
             elif isinstance(irasas, Islaidos):
-                print(f'{irasas.gavejas}: išlaidos yra: {irasas.suma}')
+                print(f'{irasas.gavejas}: išlaidos yra: {irasas.suma} € \n')
             else:
-                print("Blogas įrašas")
+                print("Blogas įrašas \n")
 
     def balansas(self):
+        clear()
         visos_pajamos = 0
         visos_islaidos = 0
         for balansas in biudzetas.zurnalas:
@@ -51,7 +69,7 @@ class Biudzetas():
                 visos_pajamos += balansas.suma 
             elif isinstance(balansas, Islaidos):
                 visos_islaidos += balansas.suma 
-        print(f"Balansas: {visos_pajamos - visos_islaidos}")
+        print(f"Balansas: {visos_pajamos - visos_islaidos} \n")
 
 biudzetas = Biudzetas()
 
@@ -65,33 +83,16 @@ while True:
     
 
     if pasirinkimas == 1:
-        clear()
         biudzetas.ataskaita()
-        print('\n')
     elif pasirinkimas == 2:
-        clear()
         biudzetas.balansas()
-        print('\n')
     elif pasirinkimas == 3:
-        clear()
-        pajamos = float(input("Įveskite savo pajamas: "))
-        komentaras = input('Įveskite komentarą: ')
-        siuntejas = input("Įveskite siuntėją: ")
-        biudzetas.itraukti_irasa(Pajamos(siuntejas, pajamos, komentaras))
-        clear()
-        print('Sukurtas naujas pajamų įrašas. \n')
+        pajamu_menu()
     elif pasirinkimas == 4:
-        clear()
-        islaidos = float(input("Įveskite savo išlaidas: "))
-        komentaras = input('Įveskite komentarą: ')
-        gavejas = input("Įveskite siuntėją: ")
-        biudzetas.itraukti_irasa(Islaidos(gavejas, islaidos, komentaras))
-        clear()
-        print('Sukurtas naujas išlaidų įrašas. \n')
+        islaidu_menu()
     elif pasirinkimas == 0:
         clear()
         break
     else:
         clear()
         print('Tokio pasirinkimo nėra, prašome bandyti dar kartą.')
-        
